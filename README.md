@@ -23,7 +23,7 @@ An application that helps kidney patients to learn more about Beirut's dialysis 
 
 Install Kidney+ app
 
-[Download](https://www.mediafire.com/file/8jd1axelsgx6cg9/Kidney.apk/file)
+[Download](https://www.mediafire.com/file/807mjbthiiw7bh2/Kidney-v2.apk/file)
 
 ## License
 
