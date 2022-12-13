@@ -5,6 +5,7 @@ class Routes {
   static const String registerRoute = '/register';
   static const String infoRegisterRoute = '/infoRegister';
   static const String moreInfoRegisterRoute = '/moreInfoRegister';
+  static const String notifyInfoRegisterRoute = '/notifyInfoRegister';
   static const String homeRoute = '/home';
   static const String callDoctorRoute = '/callDoctor';
   static const String emergencyRoute = '/emergency';

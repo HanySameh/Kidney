@@ -1,10 +1,10 @@
-
 # Kidney+ App
 
-An application that helps kidney patients to learn more about Beiruti dialysis and to communicate with the doctor through a call or WhatsApp, and to send a notification at the time of the dialysis or medication.
+An application that helps kidney patients to learn more about Beirut's dialysis and to communicate with the doctor through a call or WhatsApp, and to send a notification at the time of the dialysis or medication.
 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/78942298/207095032-fece2d44-959c-4377-800e-625cc4bb9063.png">
+<p align="center"
+<img src="https://user-images.githubusercontent.com/78942298/207095032-fece2d44-959c-4377-800e-625cc4bb9063.png"
+>
 </p>
 
 ## Features
@@ -12,9 +12,8 @@ An application that helps kidney patients to learn more about Beiruti dialysis a
 - Authentication
 - Contact your doctor via call or whatsapp
 - Notifications
-- youtube video 
+- youtube video
 - Cross platform
-
 
 ## Screenshots
 
@@ -25,8 +24,7 @@ An application that helps kidney patients to learn more about Beiruti dialysis a
 Install Kidney+ app
 
 [Download](https://www.mediafire.com/file/8jd1axelsgx6cg9/Kidney.apk/file)
-    
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-

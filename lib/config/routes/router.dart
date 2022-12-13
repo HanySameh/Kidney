@@ -11,6 +11,7 @@ import 'package:kidney/view/screens/learn_more.dart';
 import 'package:kidney/view/screens/log_in_screen.dart';
 import 'package:kidney/view/screens/basic_register_screen.dart';
 import 'package:kidney/view/screens/more_info_register_screen.dart';
+import 'package:kidney/view/screens/notify_info_screen.dart';
 import 'package:kidney/view/screens/treatment_screen.dart';
 
 import '../../core/utils/app_strings.dart';
@@ -46,6 +47,15 @@ class AppRoutes {
             return const Directionality(
               textDirection: TextDirection.rtl,
               child: MoreInfoRegisterScreen(),
+            );
+          },
+        );
+      case Routes.notifyInfoRegisterRoute:
+        return CupertinoPageRoute(
+          builder: (context) {
+            return const Directionality(
+              textDirection: TextDirection.rtl,
+              child: NotifyInfoScreen(),
             );
           },
         );

@@ -130,10 +130,10 @@ class _MoreInfoRegisterScreenState extends State<MoreInfoRegisterScreen> {
                     height: context.height * 0.036,
                   ),
                   CustomButton(
-                    label: 'أشتراك',
+                    label: 'التالي',
                     onTap: () {
                       if (_numberOfDOController.text.isNotEmpty) {
-                        Navigator.of(context).pushNamed(Routes.loginRoute);
+                        Navigator.of(context).pushNamed(Routes.notifyInfoRegisterRoute);
                       } else {
                         QuickAlert.show(
                           context: context,

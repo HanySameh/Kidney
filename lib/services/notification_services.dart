@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:intl/intl.dart';
+import 'package:kidney/models/notify_model.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -52,8 +53,8 @@ class NotificationServices {
     await flutterLocalNotificationsPlugin.zonedSchedule(
       0,
       'KIDNEY',
-      'Medication time',
-      tz.TZDateTime.now(tz.local).add(const Duration(minutes: 5)),
+      'Nice Time!',
+      tz.TZDateTime.now(tz.local).add(const Duration(minutes: 4)),
       const NotificationDetails(
         android: AndroidNotificationDetails(
           'your channel id',
@@ -65,17 +66,19 @@ class NotificationServices {
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
-      payload: 'Reminder|Medication time|${DateTime.now()}|',
+      payload: 'Reminder|Nice Time!|${DateTime.now()}|',
     );
   }
 
-  Future<void> scheduledNotification(int hour, int minutes) async {
+  Future<void> scheduledNotification(
+      int hour, int minutes, NotifyModel model) async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
       0,
       'KIDNEY',
       'Medication time',
       // tz.TZDateTime.now(tz.local).add(const Duration(seconds: 15)),
-      _nextInstanceOfTenAM(hour, minutes, 5, 'None', '2022/12/12'),
+      _nextInstanceOfTenAM(
+          hour, minutes, model.remind!, model.repeat!, model.date!),
       const NotificationDetails(
         android: AndroidNotificationDetails(
           'your channel id',
@@ -101,15 +104,15 @@ class NotificationServices {
         tz.TZDateTime(tz.local, fd.year, fd.month, fd.day, hour, minutes);
     scheduledDate = taskRemind(remind, scheduledDate);
     if (scheduledDate.isBefore(now)) {
-      if (repeat == 'Daily') {
+      if (repeat == 'يومي') {
         scheduledDate = tz.TZDateTime(tz.local, now.year, now.month,
             (formattedDate.day) + 1, hour, minutes);
       }
-      if (repeat == 'Weekly') {
+      if (repeat == 'اسبوعي') {
         scheduledDate = tz.TZDateTime(tz.local, now.year, now.month,
             (formattedDate.day) + 7, hour, minutes);
       }
-      if (repeat == 'Monthly') {
+      if (repeat == 'شهري') {
         scheduledDate = tz.TZDateTime(tz.local, now.year,
             (formattedDate.month) + 1, formattedDate.day, hour, minutes);
       }
@@ -141,58 +144,4 @@ class NotificationServices {
     final String timeZoneName = await FlutterNativeTimezone.getLocalTimezone();
     tz.setLocalLocation(tz.getLocation(timeZoneName));
   }
-
-  // Future selectNotification(String? payload) async {
-  //   if (payload != null) {
-  //     //selectedNotificationPayload = "The best";
-  //     selectNotificationSubject.add(payload);
-  //     print('notification payload: $payload');
-  //   } else {
-  //     print("Notification Done");
-  //   }
-  //   Get.to(() => SecondScreen(selectedNotificationPayload));
-  // } 
-
-//Older IOS
-//   Future onDidReceiveLocalNotification(
-//       int id, String? title, String? body, String? payload) async {
-  // display a dialog with the notification details, tap ok to go to another page
-  /* showDialog(
-      context: context,
-      builder: (BuildContext context) => CupertinoAlertDialog(
-        title: const Text('Title'),
-        content: const Text('Body'),
-        actions: [
-          CupertinoDialogAction(
-            isDefaultAction: true,
-            child: const Text('Ok'),
-            onPressed: () async {
-              Navigator.of(context, rootNavigator: true).pop();
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Container(color: Colors.white),
-                ),
-              );
-            },
-          )
-        ],
-      ),
-    );
- */
-//     Get.dialog(Text(body!));
-//   }
-
-//   void _configureSelectNotificationSubject() async {
-//     selectNotificationSubject.stream.listen((String payload) async {
-//       debugPrint('My payload is ' + payload);
-//       await Get.to(() => NotificationScreen(payload: payload));
-//     });
-//     // flutterLocalNotificationsPlugin
-//     //     .getNotificationAppLaunchDetails()
-//     //     .asStream()
-//     //     .listen((payload) async {
-//     //   await Get.to(() => NotificationScreen(payload: payload));
-//     // });
-//   }
 }
